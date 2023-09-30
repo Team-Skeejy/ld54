@@ -9,6 +9,7 @@
 albedo_texture = ExtResource("2_5go57")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdryn"]
+shading_mode = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_byk5o"]
 material = SubResource("StandardMaterial3D_pdryn")

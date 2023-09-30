@@ -5,3 +5,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_m77s0")
+shader_parameter/fresnelExponent = 2.0
