@@ -13,4 +13,4 @@ func _process(delta):
 
 func _on_start_button_button_down():
 	# start game
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://assets/scenes/gameplay/Game.tscn")
