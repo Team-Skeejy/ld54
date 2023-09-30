@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu76nasmv3aee"]
+[gd_scene load_steps=10 format=3 uid="uid://cu76nasmv3aee"]
 
 [ext_resource type="Material" uid="uid://do4s542nend14" path="res://assets/materials/black_hole.tres" id="1_by17b"]
 [ext_resource type="Texture2D" uid="uid://bqb4i2a6uw3sn" path="res://assets/textures/centaurus_a.jpg" id="2_5go57"]
+[ext_resource type="Texture2D" uid="uid://ntrsfbi83ja6" path="res://assets/textures/accretion_disk.png" id="3_tg3gl"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mcb5h"]
 
@@ -9,19 +10,33 @@
 albedo_texture = ExtResource("2_5go57")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdryn"]
+shading_mode = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_byk5o"]
 material = SubResource("StandardMaterial3D_pdryn")
-size = Vector2(10, 7.45)
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md6vk"]
+albedo_texture = ExtResource("3_tg3gl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8gida"]
 
 [node name="black-hole" type="Node3D"]
 
 [node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.000810862, 0.00305855, -0.00070858)
 material_override = ExtResource("1_by17b")
 mesh = SubResource("SphereMesh_mcb5h")
 surface_material_override/0 = ExtResource("1_by17b")
 
 [node name="bkg" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.29884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00807238, 2.38419e-07, -2.29536)
+visible = false
 material_override = SubResource("StandardMaterial3D_66i6e")
 mesh = SubResource("QuadMesh_byk5o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_md6vk")
+transparency = 1.0
+mesh = SubResource("QuadMesh_8gida")
