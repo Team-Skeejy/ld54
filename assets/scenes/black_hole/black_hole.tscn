@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu76nasmv3aee"]
+
+[ext_resource type="Material" uid="uid://do4s542nend14" path="res://assets/materials/black_hole.tres" id="1_by17b"]
+[ext_resource type="Texture2D" uid="uid://bqb4i2a6uw3sn" path="res://assets/textures/centaurus_a.jpg" id="2_5go57"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mcb5h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66i6e"]
+albedo_texture = ExtResource("2_5go57")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdryn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_byk5o"]
+material = SubResource("StandardMaterial3D_pdryn")
+size = Vector2(10, 7.45)
+
+[node name="black-hole" type="Node3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_by17b")
+mesh = SubResource("SphereMesh_mcb5h")
+surface_material_override/0 = ExtResource("1_by17b")
+
+[node name="bkg" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.29884)
+material_override = SubResource("StandardMaterial3D_66i6e")
+mesh = SubResource("QuadMesh_byk5o")
