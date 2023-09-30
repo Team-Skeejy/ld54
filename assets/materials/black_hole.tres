@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://do4s542nend14"]
+
+[ext_resource type="Shader" uid="uid://b0ekcuoa402aq" path="res://assets/shaders/black_hole.tres" id="1_m77s0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_m77s0")
+shader_parameter/fresnelExponent = 2.0
