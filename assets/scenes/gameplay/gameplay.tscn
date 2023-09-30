@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg3hv7765ouc8"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_qnk8j"]
+
+[sub_resource type="Curve3D" id="Curve3D_523ja"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_taaem"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_872io"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq5tp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j5ila"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tba1q"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="gameplay" type="Node3D"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Path3D" type="Path3D" parent="Node"]
+curve = SubResource("Curve3D_523ja")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+mesh = SubResource("CylinderMesh_taaem")
+
+[node name="enemy" type="Node" parent="."]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="enemy" node_paths=PackedStringArray("pointer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.84006, 0, 0)
+motion_mode = 1
+script = ExtResource("1_qnk8j")
+pointer = NodePath("../pointer")
+speed = 1000.0
+angle_step = 0.2
+distance = 12.0
+
+[node name="Sprite3D" type="Sprite3D" parent="enemy/CharacterBody3D"]
+texture = SubResource("ImageTexture_872io")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy/CharacterBody3D"]
+shape = SubResource("BoxShape3D_aq5tp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="enemy/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0136452, 0, 0)
+mesh = SubResource("BoxMesh_j5ila")
+skeleton = NodePath("../..")
+
+[node name="pointer" type="MeshInstance3D" parent="enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61628, 0, 0)
+mesh = SubResource("BoxMesh_tba1q")
+skeleton = NodePath("../CharacterBody3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0543054, 0.998524, 0, -0.998524, 0.0543054, 0, 30.9461, 0)
+projection = 1
+size = 20.0
